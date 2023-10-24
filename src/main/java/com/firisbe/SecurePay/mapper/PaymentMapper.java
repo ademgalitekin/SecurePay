@@ -20,6 +20,9 @@ public abstract class PaymentMapper {
     public abstract Payment requestToEntity(PaymentRequest paymentRequest);
     public abstract List<PaymentResponse> entitiesToResponses(List<Payment> payments);
 
+    public abstract PaymentResponse entityToResponse(Payment payment);
+
+
     @AfterMapping
     protected void mapCustomer(PaymentRequest paymentRequest, @MappingTarget Payment payment) {
         if (paymentRequest.getCustomerId() != null) {

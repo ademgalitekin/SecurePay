@@ -27,9 +27,9 @@ public class PaymentController {
     private final PaymentMapper paymentMapper;
 
     @PostMapping
-    public ResponseEntity<Payment> savePayment(@RequestBody PaymentRequest paymentRequest) {
+    public ResponseEntity<PaymentResponse> savePayment(@RequestBody PaymentRequest paymentRequest) {
         Payment payment = paymentMapper.requestToEntity(paymentRequest);
-        return new ResponseEntity<>(paymentService.savePayment(payment), HttpStatus.CREATED);
+        return new ResponseEntity<>(paymentMapper.entityToResponse(paymentService.savePayment(payment)), HttpStatus.CREATED);
     }
 
     @GetMapping(PATH_SEARCH)
